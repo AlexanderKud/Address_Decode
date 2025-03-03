@@ -58,7 +58,19 @@ http://addresses.loyce.club/
 
 https://blockchair.com/dumps
 
+grep -o -E '1[a-zA-Z0-9]{25,34}' Bitcoin_addresses_March_01_2025.tsv > bitcoin_addresses.txt
 
+grep -o -E 't[13][1-9A-HJ-NP-Za-km-z]{33,34}' blockchair_zcash_addresses_latest.tsv > zcash_addresses
+
+grep -o -E '([LM][1-9A-HJ-NP-Za-km-z]{33}|ltc1[02-9ac-hj-np-z]{39,59})' blockchair_litecoin_addresses_latest.tsv > litecoin_addresses
+
+grep -o -E '([DA9][1-9A-HJ-NP-Za-km-z]{25,34})' blockchair_dogecoin_addresses_latest.tsv > dogecoin_addresses
+
+grep -o -E '([X7][1-9A-HJ-NP-Za-km-z]{33})' blockchair_dash_addresses_latest.tsv > dash_addresses
+
+grep -o -E '([qp][0-9a-z]{41})' blockchair_bitcoin-cash_addresses_latest.tsv > cash_addresses
+                                   ---------------------------------          ---------------
+                                   Download document data from the website  >  Extract plain text address
 
 # Running
 Use the following command format to run the program:
