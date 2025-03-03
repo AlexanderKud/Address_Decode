@@ -52,6 +52,7 @@ gcc -o universal_decode universal_decode.c segwit_addr.c base58_nocheck.c -lpthr
 ```bash
 make clean
 ```
+```bash
 ###Free access to the world's richest address rankings
 
 http://addresses.loyce.club/
@@ -71,12 +72,12 @@ grep -o -E '([X7][1-9A-HJ-NP-Za-km-z]{33})' blockchair_dash_addresses_latest.tsv
 grep -o -E '([qp][0-9a-z]{41})' blockchair_bitcoin-cash_addresses_latest.tsv > cash_addresses
                                    ---------------------------------          ---------------
                                    Download document data from the website  >  Extract plain text address
-
+```
 # Running
 Use the following command format to run the program:
 ```bash
 ./universal_decode -f <input_file> -o <output_file> [-t <thread_count>]
-```
+
 - `-f <input_file>`: Specifies the input file containing cryptocurrency addresses, one address per line.
 - `-o <output_file>`: Specifies the output file for the extracted `hash160` values, one `hash160` per line.
 - `-t <thread_count>`: Optional, specifies the number of threads to use. Defaults to single-threaded. It is recommended to set this to the number of CPU cores on the system to optimize performance.
