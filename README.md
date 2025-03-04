@@ -42,7 +42,7 @@ make
 
 ### Or, navigate to the project directory in the terminal and run:
 ```bash
-gcc -o universal_decode universal_decode.c segwit_addr.c base58_nocheck.c -lpthread -Wall
+gcc -o3 -o universal_decode universal_decode.c segwit_addr.c base58_nocheck.c -lpthread -Wall
 ```
 - `-o universal_decode`: Specifies the output executable file name as `universal_decode`.
 - `-lpthread`: Links the POSIX thread library.
