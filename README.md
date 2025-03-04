@@ -59,7 +59,6 @@ http://addresses.loyce.club/
 
 https://blockchair.com/dumps
 
-grep -o -E '1[a-zA-Z0-9]{25,34}' Bitcoin_addresses_March_01_2025.tsv > bitcoin_addresses.txt
 
 grep -o -E 't[13][1-9A-HJ-NP-Za-km-z]{33,34}' blockchair_zcash_addresses_latest.tsv > zcash_addresses
 
@@ -75,12 +74,15 @@ grep -o -E '([qp][0-9a-z]{41})' blockchair_bitcoin-cash_addresses_latest.tsv > c
 
 merge
 
-cat dogecoin_addresses bitcoin_addresses.txt litecoin_addresses dash_addresses > all.addresses.txt
+cat dogecoin_addresses Bitcoin_addresses_March_01_2025.tsv litecoin_addresses dash_addresses > all.addresses.txt
 
 Convert to hash 160 using program, sort to remove duplicates
 
 sort -u all.160.txt > all.hash160.txt
 
+The command to extract the address will have errors. Please extract according to the actual data to avoid decoding failure caused by address errors. It is best to download the address data document and exclude the public key script hash that does not meet the requirements at the end.
+
+grep -Eo '\b[a-fA-F0-9]{40}\b' all.hash160.txt > all.hash160.1.txt
 ```
 # Running
 Use the following command format to run the program:
