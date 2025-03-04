@@ -72,6 +72,15 @@ grep -o -E '([X7][1-9A-HJ-NP-Za-km-z]{33})' blockchair_dash_addresses_latest.tsv
 grep -o -E '([qp][0-9a-z]{41})' blockchair_bitcoin-cash_addresses_latest.tsv > cash_addresses
                                    ---------------------------------          ---------------
                                    Download document data from the website  >  Extract plain text address
+
+merge
+
+cat dogecoin_addresses bitcoin_addresses.txt litecoin_addresses dash_addresses > all.addresses.txt
+
+Convert to hash 160 using program, sort to remove duplicates
+
+sort -u all.160.txt > all.hash160.txt
+
 ```
 # Running
 Use the following command format to run the program:
