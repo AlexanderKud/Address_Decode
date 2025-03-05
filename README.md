@@ -55,35 +55,9 @@ make clean
 ```bash
 ###Free access to the world's richest address rankings
 
-http://addresses.loyce.club/
-
-https://blockchair.com/dumps
+https://privatekeyfinder.io/download/
 
 
-grep -o -E 't[13][1-9A-HJ-NP-Za-km-z]{33,34}' blockchair_zcash_addresses_latest.tsv > zcash_addresses
-
-grep -o -E '([LM][1-9A-HJ-NP-Za-km-z]{33}|ltc1[02-9ac-hj-np-z]{39,59})' blockchair_litecoin_addresses_latest.tsv > litecoin_addresses
-
-grep -o -E '([DA9][1-9A-HJ-NP-Za-km-z]{25,34})' blockchair_dogecoin_addresses_latest.tsv > dogecoin_addresses
-
-grep -o -E '([X7][1-9A-HJ-NP-Za-km-z]{33})' blockchair_dash_addresses_latest.tsv > dash_addresses
-
-grep -o -E '([qp][0-9a-z]{41})' blockchair_bitcoin-cash_addresses_latest.tsv > cash_addresses
-                                   ---------------------------------          ---------------
-                                   Download document data from the website  >  Extract plain text address
-
-merge
-
-cat dogecoin_addresses Bitcoin_addresses_March_01_2025.tsv litecoin_addresses dash_addresses > all.addresses.txt
-
-Convert to hash 160 using program, sort to remove duplicates
-
-sort -u all.160.txt > all.hash160.txt
-
-The command to extract the address will have errors. Please extract according to the actual data to avoid decoding failure caused by address errors. It is best to download the address data document and exclude the public key script hash that does not meet the requirements at the end.
-
-grep -Eo '\b[a-fA-F0-9]{40}\b' all.hash160.txt > all.hash160.1.txt
-```
 # Running
 Use the following command format to run the program:
 ```bash
