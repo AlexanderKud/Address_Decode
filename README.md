@@ -42,7 +42,10 @@ make
 
 ### Or, navigate to the project directory in the terminal and run:
 ```bash
-gcc -o3 -o universal_decode universal_decode.c segwit_addr.c base58_nocheck.c -lpthread -Wall
+gcc -O3 -o universal_decode universal_decode.c segwit_addr.c base58_nocheck.c -lpthread -Wall -Wextra
+gcc -O3 -o decode decode.c segwit_addr.c base58_nocheck.c -lpthread -Wall -Wextra
+gcc -O3 -o tq tq.c
+
 ```
 - `-o universal_decode`: Specifies the output executable file name as `universal_decode`.
 - `-lpthread`: Links the POSIX thread library.
@@ -52,23 +55,42 @@ gcc -o3 -o universal_decode universal_decode.c segwit_addr.c base58_nocheck.c -l
 ```bash
 make clean
 ```
-```bash
 ###Free access to the world's richest address rankings
 
-https://privatekeyfinder.io/download/
+http://addresses.loyce.club/
+
+https://blockchair.com/dumps
+
 
 
 # Running
 Use the following command format to run the program:
 ```bash
-./universal_decode -f <input_file> -o <output_file> [-t <thread_count>]
+./universal_decode -f input_addresses.txt -o output_hash160.txt -t 4
 
+./decode -f input_addresses.txt -os success_hash160.txt -of fail_hash160.txt -t 4
+
+./decode 19qZAgZM4dniNqwuYmQca7FBReTLGX9xyS
+
+./tq input_addresses.txt output_addresses.txt
+
+```
 - `-f <input_file>`: Specifies the input file containing cryptocurrency addresses, one address per line.
 - `-o <output_file>`: Specifies the output file for the extracted `hash160` values, one `hash160` per line.
 - `-t <thread_count>`: Optional, specifies the number of threads to use. Defaults to single-threaded. It is recommended to set this to the number of CPU cores on the system to optimize performance.
+- `-os <output_file>`:Specifies an output file of extracted successfully decoded "hash160" values, one "hash160" per line.
+- `-of <output_file>`:Specifies an output file of extracted "hash160" values ​​that failed to decode, one "hash160" per line.
+
+
+The decode version supports decoding of a single address, printing to the command console, 
+and supports successful output and failed output.
+ This version of universal_decode does not support decoding failure output, 
+ nor does it support decoding of a single address. tq extracts the address from the document and saves it to a new document, 
+ removing the redundant balance value at the end.
 
 ## Example:
-```bash
+
+```
 ./universal_decode -f input_addresses.txt -o output_hash160.txt -t 4
 ```
 
@@ -157,6 +179,15 @@ b8fae772d98d62059e4a25ee413aebf50f6b59ea
 fae772d98d62059e4a25ee413aebf50f6b59ea5b
 caccf59299921f40d087760032a4e720af5b68fc
 ```
+## Run Command
+```
+./decode 19qZAgZM4dniNqwuYmQca7FBReTLGX9xyS
+```
+## Output
+```
+60efd2f42cce4cee59cc69cdd54c769cc0c070f3
+```
+
 
 # Notes
 - For BCH addresses, the `00` prefix of `hash160` has been correctly removed, extracting only the valid `hash160`.
